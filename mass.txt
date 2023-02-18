@@ -1,0 +1,105 @@
+﻿// Project16.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	srand(time(NULL));
+
+	int mass[10];
+	int index;
+
+	for (index = 0; index < 10; index++)
+	{
+		mass[index] = rand();
+	}
+
+
+	cout << "\nrandom numbers: ";
+	for (int i = 0; i < 10; i++)
+	{
+		cout << mass[i] << " ";
+	}
+
+	int evens = 0;
+	int odds = 0;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (i % 2 == 0)
+			evens += mass[i];
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (i % 2 != 0)
+			odds += mass[i];
+	}
+
+	cout << "\nsum of evens = " << evens;
+	cout << "\nsum of odds = " << odds;
+	if (evens > odds)
+		cout << "\nevens > odds" << endl;
+	else if (evens < odds)
+		cout << "\nevens < odds" << endl;
+	else
+		cout << "\nevens = odds" << endl;
+
+	int max = mass[0]; int min = mass[0];
+	int imax; int imin;
+
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (mass[i] <= min)
+		{
+			min = mass[i];
+			imin = i;
+		}
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (mass[i] >= max) 
+		{
+			max = mass[i];
+			imax = i;
+		}
+	}
+	
+	cout << "min = " << min << endl;
+	cout << "max = " << max << endl;
+	cout << "imin = " << imin << endl;
+	cout << "imax = " << imax << endl;
+
+	if (imax < imin) swap(imin, imax);
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (i > imin && i < imax) mass[i] = 0;
+	}
+
+	for (int i = 0; i < 10; i++)
+		cout << mass[i] << " ";
+
+
+
+
+
+
+
+
+
+}
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
